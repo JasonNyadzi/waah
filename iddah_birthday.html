@@ -55,6 +55,7 @@
       height: 10px;
       top: 0;
       animation: fall linear forwards;
+      border-radius: 50%;
     }
 
     @keyframes fall {
@@ -111,9 +112,9 @@
 
       <p>Tap these 👇</p>
       <div>
-        <span class="emoji-btn" onclick="createConfetti()">🎂</span>
-        <span class="emoji-btn" onclick="createConfetti()">🎉</span>
-        <span class="emoji-btn" onclick="createConfetti()">✨</span>
+        <span class="emoji-btn" onclick="createConfetti(100)">🎂</span>
+        <span class="emoji-btn" onclick="createConfetti(100)">🎉</span>
+        <span class="emoji-btn" onclick="createConfetti(100)">✨</span>
       </div>
 
       <button onclick="showPoem()">Bonus 👀</button>
@@ -121,19 +122,10 @@
 
     <div id="poem" class="card hidden">
       <p>
-        Today’s your day, the candles glow,<br>
-        A time to shine, to laugh, to grow.<br><br>
-
-        With every smile, you light the way—<br>
-        A little brighter every day ✨<br><br>
-
-        You’ve got that spark, that fearless fire,<br>
-        A heart that lifts, a mind that inspires.<br><br>
-
-        So here’s to joy, to cake, to cheer 🎂,<br>
-        To all your wishes drawing near.<br><br>
-
-        Happy Birthday, Iddah 🎉
+        Candles lit and wishes made,<br>
+        A perfect kind of birthday laid.<br>
+        Just good vibes and feeling right,<br>
+        That’s your energy today and tonight 🎉
       </p>
     </div>
   </div>
@@ -153,14 +145,14 @@
           countdownEl.innerText = '🎉';
           clearInterval(interval);
           document.getElementById('letter').classList.remove('hidden');
-          createConfetti(150);
+          createConfetti(200); // stronger confetti burst
         }
       }, 800);
     }
 
     function showPoem() {
       document.getElementById('poem').classList.remove('hidden');
-      createConfetti(120);
+      createConfetti(150); // bigger celebration
     }
 
     function createConfetti(amount = 100) {
@@ -168,11 +160,13 @@
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
         confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = ['#c084fc','#f9a8d4','#ffffff','#a855f7'][Math.floor(Math.random()*4)];
+        confetti.style.width = confetti.style.height = (Math.random() * 10 + 8) + 'px';
+        confetti.style.backgroundColor = ['#c084fc','#f9a8d4','#ffffff','#a855f7','#facc15','#22c55e'][Math.floor(Math.random()*6)];
         confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
         document.body.appendChild(confetti);
 
-        setTimeout(() => confetti.remove(), 3000);
+        setTimeout(() => confetti.remove(), 3500);
       }
     }
   </script>
