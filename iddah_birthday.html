@@ -30,21 +30,19 @@
       animation: fadeIn 1s ease forwards;
     }
     button {
-      padding: 10px 20px;
+      padding: 12px 22px;
       border: none;
       border-radius: 10px;
       background: #a855f7;
       color: white;
-      font-size: 1rem;
+      font-size: 1.1rem;
       cursor: pointer;
       margin-top: 15px;
     }
     button:hover {
       background: #9333ea;
     }
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -55,7 +53,6 @@
       position: fixed;
       width: 10px;
       height: 10px;
-      background: red;
       top: 0;
       animation: fall linear forwards;
     }
@@ -66,32 +63,60 @@
         opacity: 0;
       }
     }
+
+    .emoji-btn {
+      font-size: 2rem;
+      cursor: pointer;
+      margin: 10px;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .emoji-btn:hover {
+      transform: scale(1.3);
+    }
+
+    #countdown {
+      font-size: 2rem;
+      color: white;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Happy Birthday, Iddah</h1>
+    <h1>🎉 Happy Birthday, Iddah 🎂</h1>
 
     <div class="card">
-      <p>Hey, I made something for you 🙂</p>
-      <button onclick="showLetter()">Open</button>
+      <p>Click MEEEEE for your surprise 😁🎁✨</p>
+      <button onclick="startCountdown()">Start 🎬</button>
     </div>
+
+    <div id="countdown" class="hidden"></div>
 
     <div id="letter" class="card hidden">
       <p>
-        Hey Iddah,<br><br>
+        Hey Iddah 😊,<br><br>
 
-        I just wanted to take a moment to say happy birthday. I hope today is filled with good energy, laughter, and all the little things that make you genuinely happy.<br><br>
+        Just wanted to say happy birthday 🎉 I hope today is full of good vibes, laughter, and moments that actually make you smile.<br><br>
 
-        You’re someone who brings a really unique kind of vibe—calm, fun, and just easy to be around. It’s rare, and it doesn’t go unnoticed.<br><br>
+        You’ve got a really cool energy about you—easy to talk to, fun to be around, and just genuinely a good person ✨<br><br>
 
-        I hope this year brings you growth, new experiences, and moments that you’ll look back on and smile about.<br><br>
+        I hope this year brings you more wins, more memories, and a lot of moments you’ll look back on and appreciate.<br><br>
 
-        Enjoy your day, seriously. You deserve it.<br><br>
+        Enjoy your day properly 🎂 you deserve it.<br><br>
 
-        — From me
+        — From me 🙂
       </p>
-      <button onclick="showPoem()">Something extra</button>
+
+      <p>Tap these 👇</p>
+      <div>
+        <span class="emoji-btn" onclick="createConfetti()">🎂</span>
+        <span class="emoji-btn" onclick="createConfetti()">🎉</span>
+        <span class="emoji-btn" onclick="createConfetti()">✨</span>
+      </div>
+
+      <button onclick="showPoem()">Bonus 👀</button>
     </div>
 
     <div id="poem" class="card hidden">
@@ -100,35 +125,46 @@
         A time to shine, to laugh, to grow.<br><br>
 
         With every smile, you light the way—<br>
-        A little brighter every day.<br><br>
+        A little brighter every day ✨<br><br>
 
         You’ve got that spark, that fearless fire,<br>
         A heart that lifts, a mind that inspires.<br><br>
 
-        And though you love a spooky scene,<br>
-        To me, you’re more than any dream.<br><br>
-
-        So here’s to joy, to cake, to cheer,<br>
+        So here’s to joy, to cake, to cheer 🎂,<br>
         To all your wishes drawing near.<br><br>
 
-        Happy Birthday, Iddah.
+        Happy Birthday, Iddah 🎉
       </p>
     </div>
   </div>
 
   <script>
-    function showLetter() {
-      document.getElementById('letter').classList.remove('hidden');
-      createConfetti();
+    function startCountdown() {
+      const countdownEl = document.getElementById('countdown');
+      countdownEl.classList.remove('hidden');
+      let count = 3;
+      countdownEl.innerText = count;
+
+      const interval = setInterval(() => {
+        count--;
+        if (count > 0) {
+          countdownEl.innerText = count;
+        } else {
+          countdownEl.innerText = '🎉';
+          clearInterval(interval);
+          document.getElementById('letter').classList.remove('hidden');
+          createConfetti(150);
+        }
+      }, 800);
     }
 
     function showPoem() {
       document.getElementById('poem').classList.remove('hidden');
-      createConfetti();
+      createConfetti(120);
     }
 
-    function createConfetti() {
-      for (let i = 0; i < 80; i++) {
+    function createConfetti(amount = 100) {
+      for (let i = 0; i < amount; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
         confetti.style.left = Math.random() * 100 + 'vw';
@@ -142,4 +178,3 @@
   </script>
 </body>
 </html>
-
