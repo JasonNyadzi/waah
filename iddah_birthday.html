@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Iddah 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #ff6f91;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background: #ff3f6c;
+    }
+    .hidden {
+      display: none;
+    }
+    .emoji {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Happy Birthday, Iddah 🎂</h1>
+
+    <div class="card">
+      <p>Click the button below 👇</p>
+      <button onclick="showMessage()">Open Your Surprise 💌</button>
+    </div>
+
+    <div id="message" class="card hidden">
+      <p>
+        Today’s your day, the candles glow,<br>
+        A time to shine, to laugh, to grow.<br><br>
+
+        With every smile, you light the way—<br>
+        A little brighter every day. ✨<br><br>
+
+        You’ve got that spark, that fearless fire,<br>
+        A heart that lifts, a mind that inspires. 💖<br><br>
+
+        And though you love a spooky scene 👻,<br>
+        To me, you’re more than any dream.<br><br>
+
+        So here’s to joy, to cake, to cheer 🎂,<br>
+        To all your wishes drawing near.<br><br>
+
+        Happy Birthday Iddah ❤️<br>
+        — From someone who really cares about you 💕
+      </p>
+      <button onclick="showHearts()">Click Me Again 😏</button>
+    </div>
+
+    <div id="hearts" class="hidden">
+      <p class="emoji">💖 💕 💘 💞 💓 💗 💝</p>
+      <p>I wish I could be there with you today... but this is just a small piece of me with you ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('message').classList.remove('hidden');
+    }
+
+    function showHearts() {
+      document.getElementById('hearts').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
